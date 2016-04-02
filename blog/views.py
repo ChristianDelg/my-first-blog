@@ -6,4 +6,12 @@ def post_list(request):
         posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
         return render(request, 'blog/post_list.html', {'posts': posts})
 
+def login(request):
+        mensaje = ''
+        if request.method == 'POST':
+                mensaje = 'Mensaje enviado cn POST'
+        else:
+                mensaje = 'sin post'
+        return render(request, 'blog/login.html', {'mensaje': mensaje})
+
 #renderizara(construira)
